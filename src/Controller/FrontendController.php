@@ -12,14 +12,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\res;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Inscripcion;
+use App\Entity\Evento;
 
 class FrontendController extends Controller {   
     
     /**
      *
-     * @Route("/", name="index")
+     * @Route("/{idevento}", name="index")
      */
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request, $idevento) {
+    $entityManager = $this->getDoctrine()->getManager();
+    $evento = $entityManager->getRepository(Evento::class)->find($idevento);
         // just setup a fresh $task object (remove the dummy data)
     $inscripcion = new Inscripcion();
 
@@ -44,9 +47,26 @@ class FrontendController extends Controller {
                 "class" => "form-control"
             )
         ))
-        ->add('jurisdiccionOrganismo', TextType::class, array(
+        ->add('tareas', TextType::class, array(
+            'attr' => array(
+                "class" => "form-control",
+                "placeholder" => "Describa las tareas que desempeña"
+            )
+        ))
+        ->add('localidad', TextType::class, array(
             'attr' => array(
                 "class" => "form-control"
+            )
+        ))
+        ->add('provincia', TextType::class, array(
+            'attr' => array(
+                "class" => "form-control"
+            )
+        ))
+        ->add('jurisdiccionOrganismo', TextType::class, array(
+            'attr' => array(
+                "class" => "form-control",
+                "placeholder" => "Entidad a la que pertenece"
             )
         ))
         ->getForm();
@@ -57,10 +77,10 @@ class FrontendController extends Controller {
         // $form->getData() holds the submitted values
         // but, the original `$task` variable has also been updated
         $inscripcion = $form->getData();
-
+        $inscripcion->setEvento($evento);
         // ... perform some action, such as saving the task to the database
         // for example, if Task is a Doctrine entity, save it!
-        $entityManager = $this->getDoctrine()->getManager();
+        
         $entityManager->persist($inscripcion);
         $entityManager->flush();
 

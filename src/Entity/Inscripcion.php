@@ -60,6 +60,11 @@ class Inscripcion
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $localidad;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evento", inversedBy="inscripciones")
+     */
+    private $evento;
 
     public function getId(): ?int
     {
@@ -174,5 +179,16 @@ class Inscripcion
         return $this;
     }
 
+    public function getEvento(): ?Evento
+    {
+        return $this->evento;
+    }
+
+    public function setEvento(?Evento $evento): self
+    {
+        $this->evento = $evento;
+
+        return $this;
+    }
     
 }
