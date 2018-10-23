@@ -1,0 +1,133 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {
+     background: url('static/fondo_inscripcion.jpg') fixed;
+    background-size: cover;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 { 
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+</style>
+<div class="container">
+            <form name="form" method="post" class="form-horizontal" role="form">
+                <h2>Inscripción al evento</h2>                
+                <div class="form-group">
+                    <label for="form_nombre" class="col-sm-3 control-label">Nombre</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.nombre) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_apellido" class="col-sm-3 control-label">Apellido</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.apellido) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.email) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_telefono" class="col-sm-3 control-label">Teléfono</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.telefono) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form_jurisdiccionOrganismo" class="col-sm-3 control-label">Jurisdicción/Organismo</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.jurisdiccionOrganismo) }}
+                    </div>
+                </div> 
+                <button type="submit" class="btn btn-primary btn-block">Inscribirme</button>
+            {{ form_end(form) }} <!-- /form -->
+        </div> <!-- ./container -->
+        
+        <script>
+            $(function(){
+	$.validator.setDefaults({
+		highlight: function(element){
+			$(element)
+			.closest('.form-group')
+			.addClass('has-error')
+		},
+		unhighlight: function(element){
+			$(element)
+			.closest('.form-group')
+			.removeClass('has-error')
+		}
+	});
+	
+	$.validate({
+		rules:
+		{	
+		    password: "required",
+			birthDate: "required",
+			weight: {
+			    required:true,
+			    number:true
+			},
+			height:  {
+			    required:true,
+			    number:true
+			},
+			email: {
+				required: true,
+				email: true
+			}
+		},
+			messages:{			
+				email: {
+				required: true,
+				email: true
+			}
+		},
+				password: {
+					required: " Please enter password"
+				},
+				birthDate: {
+					required: " Please enter birthdate"
+				},
+				email: {
+					required: ' Please enter email',
+					email: ' Please enter valid email'
+				},
+				weight: {
+					required: " Please enter your weight",
+					number: " Only numbers allowed"
+				},
+				height: {
+					required: " Please enter your height",
+					number: " Only numbers allowed"
+				},
+			}
+			
+	});
+});
+</script>
