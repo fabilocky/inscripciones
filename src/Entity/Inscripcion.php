@@ -65,6 +65,10 @@ class Inscripcion
      * @ORM\ManyToOne(targetEntity="App\Entity\Evento", inversedBy="inscripciones")
      */
     private $evento;
+    
+    public function __toString(){
+        return $this->nombre." ". $this->apellido;
+    }
 
     public function getId(): ?int
     {

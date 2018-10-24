@@ -89,6 +89,7 @@ class FrontendController extends Controller {
 
     return $this->render('inscripcion.html.twig', array(
         'form' => $form->createView(),
+        'evento' => $evento
     ));
        
     }
