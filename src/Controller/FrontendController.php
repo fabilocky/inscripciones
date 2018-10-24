@@ -84,13 +84,21 @@ class FrontendController extends Controller {
         $entityManager->persist($inscripcion);
         $entityManager->flush();
 
-        //return $this->redirectToRoute('task_success');
+        return $this->redirectToRoute('success');
     }
 
-    return $this->render('inscripcion.html.twig', array(
+    return $this->render('inscripcion2.html.twig', array(
         'form' => $form->createView(),
         'evento' => $evento
     ));
        
+    }
+    
+    /**
+     *
+     * @Route("/success/", name="success")
+     */
+    public function successAction() {
+        return $this->render('success.html.twig');
     }
 }

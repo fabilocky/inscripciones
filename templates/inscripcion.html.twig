@@ -28,20 +28,16 @@
     letter-spacing: 4px;
 }
 </style>
-<style>
-    	body, html {
-    	    height: 90%;    	
-    	    /* The image used */
-    	    background: url({{asset('static/images/fondo_Inscripcion.jpg')}});
-
-    	    /* Full height */
-    	    height: 120%; 
-
-    	    /* Center and scale the image nicely */
-    	    background-position: center;
-    	    background-repeat: no-repeat;
-    	    background-size: cover;
-    	}
+<style>    	
+        body
+{
+    background: url({{asset('static/images/fondo_Inscripcion.jpg')}}) no-repeat center center fixed;    
+    -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ height:100%;
+}
     </style>
     <div class="container" style="padding-top: 19%">
             <form name="form" method="post" class="form-horizontal" role="form">
