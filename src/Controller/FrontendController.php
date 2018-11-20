@@ -37,6 +37,11 @@ class FrontendController extends Controller {
                 "class" => "form-control"
             )
         ))
+        ->add('dni', TextType::class, array(
+            'attr' => array(
+                "class" => "form-control"
+            )
+        ))
         ->add('email', EmailType::class, array(
             'attr' => array(
                 "class" => "form-control"

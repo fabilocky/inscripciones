@@ -35,7 +35,12 @@ class Inscripcion
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $telefono;
-
+    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $dni;
+    
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -191,6 +196,18 @@ class Inscripcion
     public function setEvento(?Evento $evento): self
     {
         $this->evento = $evento;
+
+        return $this;
+    }
+
+    public function getDni(): ?string
+    {
+        return $this->dni;
+    }
+
+    public function setDni(?string $dni): self
+    {
+        $this->dni = $dni;
 
         return $this;
     }
